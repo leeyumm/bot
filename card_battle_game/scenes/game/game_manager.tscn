@@ -1,0 +1,15 @@
+[gd_scene load_steps=4 format=3]
+
+[ext_resource type="Script" path="res://scripts/game/game_manager.gd" id="1"]
+[ext_resource type="Script" path="res://scripts/game/turn_manager.gd" id="2"]
+[ext_resource type="PackedScene" path="res://scenes/cards/card.tscn" id="3"]
+[ext_resource type="PackedScene" path="res://scenes/game/table.tscn" id="4"]
+
+[node name="GameManager" type="Node"]
+script = ExtResource("1")
+card_scene = ExtResource("3")
+
+[node name="TurnManager" type="Node" parent="."]
+script = ExtResource("2")
+
+[node name="Table" parent="." instance=ExtResource("4")]

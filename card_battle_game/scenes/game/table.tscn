@@ -1,0 +1,77 @@
+[gd_scene format=3 uid="uid://bhx0y86bw8e0r"]
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_table"]
+size = Vector2(8, 8)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_table"]
+albedo_color = Color(0.2, 0.4, 0.3, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_tablebody"]
+size = Vector3(8, 0.8, 8)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_tablebody"]
+albedo_color = Color(0.35, 0.22, 0.12, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_edge_front"]
+size = Vector3(8.4, 0.12, 0.2)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_edge"]
+albedo_color = Color(0.28, 0.16, 0.08, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_edge_side"]
+size = Vector3(0.2, 0.12, 8.4)
+
+[sub_resource type="Environment" id="Environment_1"]
+background_mode = 1
+background_color = Color(0.1, 0.12, 0.16, 1)
+ambient_light_source = 2
+ambient_light_color = Color(0.6, 0.6, 0.65, 1)
+ambient_light_energy = 0.5
+
+[node name="Table" type="Node3D" unique_id=247064483]
+
+[node name="TableMesh" type="MeshInstance3D" parent="." unique_id=2100693102]
+mesh = SubResource("PlaneMesh_table")
+surface_material_override/0 = SubResource("StandardMaterial3D_table")
+
+[node name="TableBody" type="MeshInstance3D" parent="." unique_id=348029742]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.4, 0)
+mesh = SubResource("BoxMesh_tablebody")
+surface_material_override/0 = SubResource("StandardMaterial3D_tablebody")
+
+[node name="EdgeFront" type="MeshInstance3D" parent="." unique_id=716429490]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.06, 4.1)
+mesh = SubResource("BoxMesh_edge_front")
+surface_material_override/0 = SubResource("StandardMaterial3D_edge")
+
+[node name="EdgeBack" type="MeshInstance3D" parent="." unique_id=1134102396]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.06, -4.1)
+mesh = SubResource("BoxMesh_edge_front")
+surface_material_override/0 = SubResource("StandardMaterial3D_edge")
+
+[node name="EdgeLeft" type="MeshInstance3D" parent="." unique_id=569481829]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.1, 0.06, 0)
+mesh = SubResource("BoxMesh_edge_side")
+surface_material_override/0 = SubResource("StandardMaterial3D_edge")
+
+[node name="EdgeRight" type="MeshInstance3D" parent="." unique_id=889589424]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.1, 0.06, 0)
+mesh = SubResource("BoxMesh_edge_side")
+surface_material_override/0 = SubResource("StandardMaterial3D_edge")
+
+[node name="CardGrid" type="Node3D" parent="." unique_id=103421648]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.05, 0)
+
+[node name="Camera3D" type="Camera3D" parent="." unique_id=314652910]
+transform = Transform3D(1, 0, 0, 0, 0.666016, 0.745938, 0, -0.745938, 0.666016, 0, 2.8, 2.5)
+current = true
+fov = 70.0
+near = 0.1
+far = 100.0
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=198746249]
+transform = Transform3D(1, 0, 0, 0, 0.707, 0.707, 0, -0.707, 0.707, 0, 5, 3)
+shadow_enabled = true
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=1913164771]
+environment = SubResource("Environment_1")
